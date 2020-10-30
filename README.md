@@ -7,6 +7,7 @@
   * Can Display The Free Champions For Players Currently (Always Up To Date)
 
 * Directions On Proper Use
-  * You need a personal developer API Key. **Grab it here ->** [Link](https://developer.riotgames.com/)
+  * Clone Repository and Run **Main.py**
+  * You need a personal developer API Key. **Grab it here -> [Link](https://developer.riotgames.com/)**
   * Generate the API Key and past into console when it asks for the key.
   * Then your free to use the application :)
