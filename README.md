@@ -1,4 +1,5 @@
 # League Console Application
+### Created And Developed By: Finnegan McGuire
 
 * Features
   * Can Grab Any Accounts From League Of Legends

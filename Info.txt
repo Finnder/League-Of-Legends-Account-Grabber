@@ -1,6 +1,0 @@
-WELCOME!
-Created By: Finnder
-Description: This is a small program that uses the league of legends api, I wanna
-try and do some unique stuff in the future. To use this you have to have a League of
-Legends account and use your own API key that can be easily generated at the
-League Of Legends Developer Portal using your League Of Legends Account.
