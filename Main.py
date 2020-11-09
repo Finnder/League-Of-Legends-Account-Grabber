@@ -5,13 +5,23 @@
 # Imports
 import json
 import requests
-import termcolor
-from termcolor import colored
+from colorama import init
+from colorama import Fore, Back, Style
+
+# Colorama init
+init(autoreset=True)
+
 
 summonerName = input('Summoner Name: ')
 APIKey = input('API KEY: ')
+
+print("An Error Occured")
+
+print("=====================================================")
+print(Fore.BLUE + Back.WHITE + "Connection to API Successful and Account Detected")
+
 print('COMMANDS: ')
-print('getaccount | listmasterys | checkmatchinfo | getfreechamps')
+print(Fore.RED + 'getaccount | listmasterys | checkmatchinfo | getfreechamps | currentgameinfo')
 
 # API LINKS
 addressAccInfo = f'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?api_key={APIKey}'
@@ -29,12 +39,11 @@ AccInfo = parse(f'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-nam
 encryptedId = AccInfo['id']
 
 # Parsing all the JSON info into usable data
+SpectatorGame = parse(f'https://na1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedId}?api_key={APIKey}')
 ChampionList = parse(f'http://ddragon.leagueoflegends.com/cdn/9.22.1/data/en_US/champion.json')
 ChampRot = parse(f'https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key={APIKey}')
-ChampMastery = parse(
-    f'https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedId}?api_key={APIKey}')
-ChampionListMasterys = parse(
-    f'https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedId}?api_key={APIKey}')
+ChampMastery = parse(f'https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedId}?api_key={APIKey}')
+ChampionListMasterys = parse(f'https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedId}?api_key={APIKey}')
 Gamemodes = parse(f'http://static.developer.riotgames.com/docs/lol/gameModes.json')
 
 appRunning = True
@@ -42,12 +51,12 @@ FREE_CHAMPION_IDS = ChampRot['freeChampionIds']
 
 # COMMANDS / While Loop to keep shit runnin
 while appRunning:
-    userInput = input('> ').lower()
+    userInput = input(Fore.CYAN + '> ').lower()
 
     if userInput == 'getaccount':
         print('-----------------')
         for items in AccInfo:
-            print(items.title() + ': ' + colored(str(AccInfo[items]), 'red', attrs=['blink', 'bold']))
+            print(items.title() + ': ' + Fore.GREEN + str(AccInfo[items]))
 
     # Lists Masteries and changes champion id's to champion names for a more readible experience for user.
     if userInput == 'listmasterys':
@@ -77,5 +86,10 @@ while appRunning:
     # Displays Free Champion Data (Shows Id's and not names of champs so can be changed for easier readable info for user)
     if userInput == 'getfreechamps':
         print(ChampRot['freeChampionIds'])
+
+    if userInput == 'currentgameinfo':
+        for items in SpectatorGame:
+            print(items.title() + ': ' + Fore.YELLOW + str(SpectatorGame[items]))
+
     if userInput == '':
         break
