@@ -1,5 +1,5 @@
 # Project Created By: Finnegan McGuire
-# Status: COMPLETED (Possible additions in the future)
+# Status: In Progress
 # Date Started: 11/16/2019 (1:20 AM, EST)
 
 # Imports
