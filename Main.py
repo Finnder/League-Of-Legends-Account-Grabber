@@ -11,12 +11,10 @@ from colorama import Fore, Back, Style
 # Colorama init
 init(autoreset=True)
 
-
 summonerName = input('Summoner Name: ')
 APIKey = input('API KEY: ')
 
 print("An Error Occured")
-
 print("=====================================================")
 print(Fore.BLUE + Back.WHITE + "Connection to API Successful and Account Detected")
 
@@ -51,12 +49,12 @@ FREE_CHAMPION_IDS = ChampRot['freeChampionIds']
 
 # COMMANDS / While Loop to keep shit runnin
 while appRunning:
-    userInput = input(Fore.CYAN + '> ').lower()
+    userInput = input('> ').lower()
 
     if userInput == 'getaccount':
         print('-----------------')
         for items in AccInfo:
-            print(items.title() + ': ' + Fore.GREEN + str(AccInfo[items]))
+            print(items.title() + ': ' + Fore.LIGHTYELLOW_EX + str(AccInfo[items]))
 
     # Lists Masteries and changes champion id's to champion names for a more readible experience for user.
     if userInput == 'listmasterys':
@@ -87,7 +85,11 @@ while appRunning:
     if userInput == 'getfreechamps':
         print(ChampRot['freeChampionIds'])
 
+    # Work In Progress
     if userInput == 'currentgameinfo':
+
+        print(" ")
+        print(Back.RED + Fore.WHITE + "-------- GAME INFO --------")
         for items in SpectatorGame:
             print(items.title() + ': ' + Fore.YELLOW + str(SpectatorGame[items]))
 
